@@ -52,7 +52,6 @@ app.get('/editItem/:id', (request, response) => {
 
 app.get('/deleteItem/:id', (request, response) => {
 	conn.query('DELETE FROM ITEMS WHERE ID = ?', [request.params.id] ,(errors, rows, fields) => {
-		//response.send(errors ? errors : 'Successfully deleted');
 		response.redirect('/');
 	})
 })
@@ -60,7 +59,6 @@ app.get('/deleteItem/:id', (request, response) => {
 app.post('/updateItem/:id', (request, response) => {
 	let data = request.body;
 	conn.query('UPDATE ITEMS SET name=?, qty=?, amount=? WHERE ID=?', [data.name, data.qty, data.amount, request.params.id] ,(error, rows, fields) => {
-		//response.send(error ? error : 'Updated Successfully');
 		response.redirect('/');
 	})
 })
@@ -68,7 +66,7 @@ app.post('/updateItem/:id', (request, response) => {
 app.post('/addItem', (request, response) => {
 	let data = request.body;
 	conn.query('INSERT INTO ITEMS (NAME, QTY, AMOUNT) VALUES(?, ?, ?)', [data.name, data.qty, data.amount] ,(error, rows, fields) => {
-		//response.send(error ? error : 'Updated Successfully');
+
 		response.redirect('/');
 	})
 })
