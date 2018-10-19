@@ -20,3 +20,7 @@ const conn = mysql.createConnection({
 conn.connect(errors => {
 	console.log(errors ? errors : "Success");
 });
+
+app.listen(8080, () => {
+	console.log('Express server started on port 8080');
+});
