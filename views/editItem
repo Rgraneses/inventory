@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title><%= title %></title>
+		 <link rel="stylesheet" href="/css/bootstrap.min.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">Items</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    <div class="navbar-nav">
+		      <a class="nav-item nav-link active" href="/">Home <span class="sr-only"></span></a>
+		      <a class="nav-item nav-link" href="/">Item Table</a>
+
+		    </div>
+		  </div>
+		</nav>
+		<br>	
+		<form action="/updateItem/<%= items.id%>" method="POST">
+			<label for="">Enter Name: </label>
+			<input type="text" name="name" value="<%= items.name%>"><br>
+			<label for="">Enter Quantity: </label>
+			<input type="text" name="qty" value="<%= items.qty%>"><br>
+			<label for="">Enter Amount: </label>
+			<input type="text" name="amount" value="<%= items.amount%>"><br>
+			<input type="submit" value="Submit" type="button" class="btn btn-primary">
+		</form>
+	</body>
+</html>
