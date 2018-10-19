@@ -1,0 +1,74 @@
+<html>	
+<head>
+	<title><%= title %></title>
+	 <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">Items</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		    <div class="navbar-nav">
+		      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+		      <a class="nav-item nav-link" href="/">Item Table</a>
+
+		    </div>
+		  </div>
+		</nav>
+		<br>	
+		<h2>Item Table</h2>
+	
+	<a href="addItem" type="button" class="btn btn-primary">Add Item</a>
+	<!-- <a href="addItem">Add Item</a> -->
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+	
+	<% items.forEach(item =>{ %>
+		<tr>
+			<td><%= item.id %></td>
+			<td><%= item.name %></td>
+			<td><%= item.qty %></td>
+			<td><%= item.amount %></td>
+			<td>
+				<a href="editItem/<%= item.id%>" type="button" class="btn btn-success">Edit</a>
+			</td>
+			<td>
+				<a onclick="return checkDelete()" href="deleteItem/<%= item.id%>" type="button" class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	<% })%>
+</tbody>
+</table>
+</body>
+
+<script src="js/jquery.js"></script>
+<script>
+	$.ajax({
+		url : '/items',
+		success : result => {
+			console.log(result);
+		}
+	})
+	</script>
+	<script language="JavaScript" type="text/javascript">
+		function checkDelete(){
+		    return confirm('Are you sure?');
+		}
+	</script>
+</html>
