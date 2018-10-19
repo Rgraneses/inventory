@@ -9,3 +9,14 @@ app.use(bodyparser.urlencoded({
 
 app.use(express.static('assets'));
 app.set('view engine', 'ejs');
+
+const conn = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	database: 'inventory',
+});
+
+conn.connect(errors => {
+	console.log(errors ? errors : "Success");
+});
